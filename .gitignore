@@ -1,0 +1,5 @@
+./auto-api-starter/target/*
+./auto-api-core/target/*
+.idea
+*.jar
+*.class

@@ -1,8 +1,0 @@
-com\iflow\api\starter\AutoApiConfig.class
-com\iflow\api\starter\AutoApiProperties$GroovyConfig.class
-com\iflow\api\starter\AutoApiAutoConfiguration.class
-com\iflow\api\starter\AutoApiProperties$DataSourceConfig.class
-com\iflow\api\starter\AutoApiStarterApplication.class
-com\iflow\api\starter\AutoApiProperties$GraphqlConfig.class
-META-INF\spring-configuration-metadata.json
-com\iflow\api\starter\AutoApiProperties.class

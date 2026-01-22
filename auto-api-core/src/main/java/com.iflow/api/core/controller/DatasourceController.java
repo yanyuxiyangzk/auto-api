@@ -84,7 +84,7 @@ public class DatasourceController {
     @PutMapping("/update/{id}")
     public Result<DatasourceConfig> update(@PathVariable Long id, @RequestBody DatasourceConfig config) {
         Optional<DatasourceConfig> existing = datasourceConfigRepository.findByIdWithoutDeleted(id);
-        if (existing.isEmpty()) {
+        if (!existing.isPresent()) {
             return Result.error("数据源不存在: " + id);
         }
 
@@ -114,7 +114,7 @@ public class DatasourceController {
     @DeleteMapping("/delete/{id}")
     public Result<Void> delete(@PathVariable Long id) {
         Optional<DatasourceConfig> existing = datasourceConfigRepository.findByIdWithoutDeleted(id);
-        if (existing.isEmpty()) {
+        if (!existing.isPresent()) {
             return Result.error("数据源不存在: " + id);
         }
 
