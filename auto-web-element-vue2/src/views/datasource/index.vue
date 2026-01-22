@@ -240,6 +240,7 @@ export default {
     },
     async handleSubmit() {
       try {
+        console.log('[Form] dialogForm:', JSON.stringify(this.dialogForm))
         await this.$refs.dialogForm.validate()
         this.submitLoading = true
         if (this.dialogForm.id) {

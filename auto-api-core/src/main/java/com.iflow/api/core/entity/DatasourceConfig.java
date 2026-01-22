@@ -45,6 +45,7 @@ public class DatasourceConfig implements Serializable {
     private Integer port;
 
     @NotBlank(message = "数据库名称不能为空")
+    @TableField("database_name")
     private String database;
 
     private String schemaName;
@@ -94,6 +95,8 @@ public class DatasourceConfig implements Serializable {
     public void setPort(Integer port) { this.port = port; }
     public String getDatabase() { return database; }
     public void setDatabase(String database) { this.database = database; }
+    public String getDatabaseName() { return database; }
+    public void setDatabaseName(String databaseName) { this.database = databaseName; }
     public String getSchemaName() { return schemaName; }
     public void setSchemaName(String schemaName) { this.schemaName = schemaName; }
     public String getUsername() { return username; }
@@ -139,7 +142,7 @@ public class DatasourceConfig implements Serializable {
             case DataSourceType.MYSQL:
                 url.append("jdbc:mysql://").append(host).append(":").append(port).append("/").append(database);
                 if (connectionParams == null || !connectionParams.contains("useUnicode")) {
-                    url.append("?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai");
+                    url.append("?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true");
                 }
                 break;
             case DataSourceType.POSTGRESQL:

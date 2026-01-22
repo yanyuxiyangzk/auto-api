@@ -61,6 +61,10 @@ public class DatasourceController {
      */
     @PostMapping("/create")
     public Result<DatasourceConfig> create(@RequestBody DatasourceConfig config) {
+        log.info("接收到的数据源配置: name={}, type={}, host={}, port={}, database={}, username={}",
+            config.getName(), config.getType(), config.getHost(), config.getPort(),
+            config.getDatabase(), config.getUsername());
+
         // 检查名称是否重复
         if (datasourceConfigRepository.existsByName(config.getName())) {
             return Result.error("数据源名称已存在: " + config.getName());

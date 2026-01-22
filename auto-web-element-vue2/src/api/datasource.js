@@ -2,21 +2,21 @@ import request from '@/api'
 
 export function getDatasourceList() {
   return request({
-    url: '/datasources',
+    url: '/datasource/list',
     method: 'get'
   })
 }
 
 export function getDatasource(id) {
   return request({
-    url: `/datasources/${id}`,
+    url: `/datasource/${id}`,
     method: 'get'
   })
 }
 
 export function createDatasource(data) {
   return request({
-    url: '/datasources',
+    url: '/datasource/create',
     method: 'post',
     data
   })
@@ -24,7 +24,7 @@ export function createDatasource(data) {
 
 export function updateDatasource(id, data) {
   return request({
-    url: `/datasources/${id}`,
+    url: `/datasource/update/${id}`,
     method: 'put',
     data
   })
@@ -32,21 +32,14 @@ export function updateDatasource(id, data) {
 
 export function deleteDatasource(id) {
   return request({
-    url: `/datasources/${id}`,
+    url: `/datasource/delete/${id}`,
     method: 'delete'
-  })
-}
-
-export function testDatasource(id) {
-  return request({
-    url: `/datasources/${id}/test`,
-    method: 'post'
   })
 }
 
 export function testDatasourceConnection(data) {
   return request({
-    url: '/datasources/test',
+    url: '/datasource/test',
     method: 'post',
     data
   })
