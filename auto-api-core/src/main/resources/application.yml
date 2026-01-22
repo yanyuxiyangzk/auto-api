@@ -1,0 +1,79 @@
+# Auto-API-Generator 配置文件示例
+# 引用：REQ-F11-002（引入方应只需简单配置即可使用）
+
+# Spring Boot 基础配置
+spring:
+  application:
+    name: auto-api-generator
+
+  # 数据源配置（默认主数据源）
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/auto_api?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: zk@12456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.iflow.api.core.entity
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# Auto-API-Generator 配置
+auto:
+  api:
+    enabled: true
+    api-prefix: /api
+    enable-rest: true
+    enable-graphql: true
+    enable-groovy: true
+    enable-hot-deploy: true
+    
+    # 数据源配置
+    datasource:
+      default-type: mysql
+      allow-dynamic-datasource: true
+    
+    # GraphQL 配置
+    graphql:
+      endpoint: /graphql
+      graphiql-enabled: true
+      introspection-enabled: true
+    
+    # Groovy 脚本配置
+    groovy:
+      script-timeout: 5000
+      sandbox-enabled: true
+      script-cache-size: 100
+      storage-type: database
+
+# 服务器配置
+server:
+  port: 8080
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    com.iflow.api: DEBUG
+    com.baomidou.mybatisplus: DEBUG

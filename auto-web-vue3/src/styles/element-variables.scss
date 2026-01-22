@@ -1,0 +1,38 @@
+// Element Plus 主题变量覆盖
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': #409eff,
+    ),
+    'success': (
+      'base': #67c23a,
+    ),
+    'warning': (
+      'base': #e6a23c,
+    ),
+    'danger': (
+      'base': #f56c6c,
+    ),
+    'info': (
+      'base': #909399,
+    ),
+  ),
+  $button-font-weight: 500,
+  $border-color: #dcdfe6,
+  $border-radius-base: 4px,
+  $border-radius-small: 2px,
+  $border-radius-large: 4px,
+  $font-size-base: 14px,
+  $font-size-small: 12px,
+  $font-size-large: 14px,
+  $input-height: 36px,
+  $input-font-size: 14px,
+  $input-border-radius: 4px,
+  $table-border-color: #dfe6ed,
+  $table-header-background-color: #fafafa,
+  $table-row-hover-background-color: #f5f7fa,
+  $table-current-row-background-color: #ecf5ff,
+  $pagination-height: 28px,
+  $dialog-title-font-size: 18px,
+  $dialog-margin-top: 15vh,
+);

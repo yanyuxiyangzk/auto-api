@@ -1,0 +1,32 @@
+{
+  "name": "auto-web-vue2",
+  "version": "1.0.0",
+  "description": "Auto-API-Generator Vue2 Frontend",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "vue": "^2.7.14",
+    "vue-router": "^3.6.5",
+    "vuex": "^3.6.2",
+    "element-ui": "^2.15.13",
+    "axios": "^1.6.2",
+    "codemirror": "^5.65.16",
+    "vue-codemirror": "^4.0.6",
+    "js-beautify": "^1.14.9",
+    "dayjs": "^1.11.10"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^5.0.8",
+    "vue-template-compiler": "^2.7.14",
+    "sass": "^1.69.5",
+    "sass-loader": "^13.3.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

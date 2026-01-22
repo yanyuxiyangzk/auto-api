@@ -1,0 +1,6 @@
+# Auto-API-Generator Spring Boot 自动配置
+# 当引入方引入 auto-api-starter 依赖时，此配置自动加载
+
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.iflow.api.starter.AutoApiAutoConfiguration
+
