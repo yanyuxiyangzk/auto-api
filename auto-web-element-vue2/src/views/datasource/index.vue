@@ -118,7 +118,7 @@
 
 <script>
 import { formatDateTime } from '@/utils'
-import { getDatasourceList, createDatasource, updateDatasource, deleteDatasource, testDatasource } from '@/api/datasource'
+import { getDatasourceList, createDatasource, updateDatasource, deleteDatasource, testDatasourceConnection } from '@/api/datasource'
 
 export default {
   name: 'Datasource',
@@ -171,11 +171,9 @@ export default {
         this.pagination.total = this.tableData.length
       } catch (error) {
         console.error('加载数据失败:', error)
-        this.tableData = [
-          { id: 1, name: '测试数据库', type: 'mysql', host: 'localhost', port: 3306, database: 'test_db', status: 1, createdAt: new Date().toISOString() },
-          { id: 2, name: '生产数据库', type: 'mysql', host: '192.168.1.100', port: 3306, database: 'prod_db', status: 1, createdAt: new Date().toISOString() }
-        ]
-        this.pagination.total = this.tableData.length
+        this.$message.error('加载数据失败，请检查后端服务')
+        this.tableData = []
+        this.pagination.total = 0
       } finally {
         this.loading = false
       }
@@ -213,12 +211,25 @@ export default {
     },
     handleEdit(row) {
       this.dialogTitle = '编辑数据源'
-      this.dialogForm = { ...row }
+      // 创建深拷贝，确保响应式追踪
+      this.dialogForm = JSON.parse(JSON.stringify({
+        id: null,
+        name: '',
+        type: 'mysql',
+        host: '',
+        port: 3306,
+        database: '',
+        username: '',
+        password: '',
+        status: 1,
+        ...row
+      }))
       this.dialogVisible = true
     },
     async handleTest(row) {
       try {
         await this.$confirm(`确定要测试数据源 "${row.name}" 的连接吗？`, '提示', { type: 'warning' })
+        await testDatasourceConnection(row)
         this.$message.success('连接测试成功')
       } catch (error) {
         if (error !== 'cancel') {
@@ -244,6 +255,7 @@ export default {
         await this.$refs.dialogForm.validate()
         this.submitLoading = true
         if (this.dialogForm.id) {
+          console.log("=========dialogForm=========="+this.dialogForm);
           await updateDatasource(this.dialogForm.id, this.dialogForm)
         } else {
           await createDatasource(this.dialogForm)

@@ -3,13 +3,22 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const routes = [
+export const constantRoutes = [
   {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login/index.vue'),
     meta: { hiddenLayout: true }
   },
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('@/views/error/404.vue'),
+    meta: { hiddenLayout: true }
+  }
+]
+
+export const asyncRoutes = [
   {
     path: '/',
     redirect: '/dashboard'
@@ -57,17 +66,13 @@ const routes = [
     meta: { title: 'API测试', icon: 'component' }
   },
   {
-    path: '/404',
-    name: '404',
-    component: () => import('@/views/error/404.vue'),
-    meta: { hiddenLayout: true }
-  },
-  {
     path: '*',
     redirect: '/404',
     meta: { hiddenLayout: true }
   }
 ]
+
+const routes = [...constantRoutes, ...asyncRoutes]
 
 const router = new VueRouter({
   routes

@@ -58,9 +58,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['permission_routes']),
+    ...mapGetters('permission', ['permission_routes']),
     menuRoutes() {
-      return this.permission_routes.filter(route => !route.meta.hiddenMenu)
+      const routes = this.permission_routes || []
+      return routes.filter(route => route.meta && !route.meta.hiddenMenu)
     }
   },
   created() {

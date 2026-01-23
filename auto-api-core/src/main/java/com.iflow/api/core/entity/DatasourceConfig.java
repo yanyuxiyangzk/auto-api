@@ -45,7 +45,7 @@ public class DatasourceConfig implements Serializable {
     private Integer port;
 
     @NotBlank(message = "数据库名称不能为空")
-    @TableField("database_name")
+    @TableField("`database`")
     private String database;
 
     private String schemaName;
@@ -95,8 +95,6 @@ public class DatasourceConfig implements Serializable {
     public void setPort(Integer port) { this.port = port; }
     public String getDatabase() { return database; }
     public void setDatabase(String database) { this.database = database; }
-    public String getDatabaseName() { return database; }
-    public void setDatabaseName(String databaseName) { this.database = databaseName; }
     public String getSchemaName() { return schemaName; }
     public void setSchemaName(String schemaName) { this.schemaName = schemaName; }
     public String getUsername() { return username; }
